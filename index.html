@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<link rel="stylesheet" href="conf.css">
+		<title> Espinosa </title>
+		<link href="https://fonts.cdnfonts.com/css/eagle-4" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script src="index.js"></script>
+	</head>
+	<body>	
+		<h1> Confession Link </h1>
+		<br/> <br/>
+		<div class="inputBox">
+			<input type="text" required id="nameInput" name="name"> 
+			<span> Enter your name <span>
+		</div>
+		<br/>
+		<a  class="submit" onclick="saveName()">
+			<span> </span>
+			<span> </span>
+			<span> </span>
+			<span> </span>
+			Submit
+		</a>
+		<br/>
+		
+		<footer> Copyright by King Ivory Espinosa </footer>
+		
+		<script type="text/javascript">		
+			function saveName() {
+				var name = document.getElementById("nameInput").value;
+				if (name !== null) {
+					localStorage.setItem("name", name);
+					location.href = "confess.html";
+				}				
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<link rel="stylesheet" href="confess.css">
+		<title> Confess </title>
+		<link href="https://fonts.cdnfonts.com/css/eagle-4" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script src="confess.js"></script>
+		<script src="jquery.js"></script>
+		
+	</head>
+	<body>	
+		<p id="header"></p>
+		<p> u str8? &#129320; </p>
+		<a id="submit" href="str8.html">
+     		> yes 
+		</a>
+		<a class="sbmt" onclick="naur()" id="submit"> 
+		   > no </a>
+		 	
+		
+		
+		<div id="inputCont" style="display: none;">
+			<p id="ok"></p>
+			<div id="inputContainer">
+			
+			<input type="text" required id="explanation"> 
+			<span> Tell me more... <span>
+			</div>
+			<a  class="send" onclick="sendexplanation()">
+				<span> </span>
+				<span> </span>
+				<span> </span>
+				<span> </span>
+				Send
+			</a>
+		</div>
+		
+		<footer> Copyright by King Ivory Espinosa </footer>
+		
+		
+		<script>
+			var name = localStorage.getItem("name");
+			document.getElementById("header").textContent = "Hello, " + name;
+			
+			function yap() {
+				ok.textContent = "k. get  out";
+			}
+			function naur() {
+				ok.textContent = "hmmm explain yourself...";
+				document.getElementById("inputCont").style.display = "block";
+			}
+			
+			
+			
+			function sendexplanation() {
+				var explanation = document.getElementById("explanation").value;
+				var name = localStorage.getItem("name");
+
+				var scriptUrl = "https://script.google.com/macros/s/AKfycbxBlN0mc0pWCgZMI1fbY2yyw0jJDmlxYIPpXIDffkahzfavT9auJupo9C0Zye3RP5Op/exec";
+
+				var xhr = new XMLHttpRequest();
+				xhr.open("POST", scriptUrl, true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+				xhr.onreadystatechange = function() {
+				if (xhr.readyState === XMLHttpRequest.DONE) {
+					if (xhr.status === 200) {
+						alert("explanation sent!");
+						 document.getElementById("inputCont").style.display = "none";
+					} else {
+						alert("An error occurred while sending the explanation. Please try again.");
+					}
+				}
+				};
+
+				xhr.send("name=" + encodeURIComponent(name) + "&explanation=" + encodeURIComponent(explanation));
+				}
+
+		</script>
+		
+		
+	</body>
+</html>
